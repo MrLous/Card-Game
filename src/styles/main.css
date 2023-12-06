@@ -112,6 +112,9 @@
 #next-duel{
     display: none;
 }
+#computer-field-card{
+    transform: rotateY(180deg);
+}
 .card-box{
     height: 9rem;
     width: 100%;
@@ -120,6 +123,7 @@
     align-items: center;
     justify-content: space-around;
 }
+
 
 .card{
     transition: transform 0.4s;
