@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="./src/styles/reset.css">
     <link rel="stylesheet" href="./src/styles/main.css">
 
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./src/assets/favicon/Favicon.ico" type="image/x-icon">
+
     <!-- frameWork style from RPGUI -->
     <link rel="stylesheet" href="./src/styles/containers_and_frames.css">
     <link rel="stylesheet" href="./src/styles/buttons.css">
@@ -19,6 +22,9 @@
     <title>Card Game - Jo-ken-po</title>
 </head>
 <body>
+    <audio id="backgroudMusic" loop>
+        <source src="./src/assets/audios/egyptian_duel.mp3">
+    </audio>
     <div class="bg-video">
         <video class="video" autoplay loop muted>
             <source src="./src/assets/video/yugi.mp4" type="video/mp4" />
@@ -27,7 +33,7 @@
     <div class="conteiner">
         <div class="conteiner__left framed-golden-2">
             <div class="score_box frame">
-                <p id="score_points"> win : 0 | lose : 0</p>
+                <p id="score_points"> Win : 0 | Draw : 0 | Lose : 0</p>
             </div>
             <div class="menu_avatar">
                 <p id="win">pick a card</p>
@@ -51,9 +57,9 @@
                             <div class="card-infield">
                                 <img id="computer-field-card" height="180px" width="125px">
                             </div>
-                             <div class="versus-bottom">
-                                <button id="next-duel" class="rpgui-button" onclick="restDuel()">GANHOU</button>
-                            </div>
+                    </div>
+                    <div class="versus-bottom">
+                        <button id="next-duel" class="rpgui-button" onclick="restDuel()">GANHOU</button>
                     </div>
                 </div>
                 <div class="card-box framed" id="player-card"></div>

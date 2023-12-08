@@ -2,8 +2,10 @@ const pathImages = "./src/assets/icons/";
 
 const state = {
     score:{
-        playerScore:0,
+        duelResults:0,
+                playerScore:0,
         computerScore:0,
+        drawScore:0,
         scoreBox: document.getElementById("score_points")
     },
     cardSprites:{
@@ -76,22 +78,23 @@ async function removeAllCardImage(){
 }
 
 async function checkDuelResults(playerCardId,computerCardId){
-    let duelResults = "DRAW";
     let playerCard = cardData[playerCardId];
     let computerCard = cardData[computerCardId]
 
     if(playerCard.WinOf == computerCard.type){
-        duelResults= "WIN";
+        state.score.duelResults= "WIN";
         state.score.playerScore++
-    }
-    if (playerCard.LoseOf == computerCard.type){
-        duelResults = "LOSE";
+    } else if (playerCard.LoseOf == computerCard.type){
+        state.score.duelResults = "LOSE";
         state.score.computerScore++
+    } else {
+        state.score.duelResults = "DRAW";
+        state.score.drawScore++;
     }
 
-    playAudio(duelResults);
+    playAudio(state.score.duelResults);
     
-    return duelResults
+    return state.score.duelResults
 }
 
 async function drawButton(text){
@@ -100,7 +103,7 @@ async function drawButton(text){
 }
 
 async function updadeScore(){
-    state.score.scoreBox.innerText = `Win: ${state.score.playerScore} | Lose: ${state.score.computerScore}`;
+    state.score.scoreBox.innerText = `Win: ${state.score.playerScore} | Draw: ${state.score.drawScore} | Lose: ${state.score.computerScore}`;
 }
 
 async function setCardFild(playerCardId){
@@ -182,6 +185,9 @@ async function restDuel(){
 function init() {
     drawCard(5, state.playerSides.player);
     drawCard(5, state.playerSides.computer);
+
+    const music = document.getElementById("backgroudMusic");
+    music.play();
 }
 
 init();
